@@ -1,0 +1,33 @@
+﻿version: '3'
+services:
+    php5.5:
+        build:
+            context: ./php5.5
+        image: oryxtc/local-php5.5
+        container_name: php5.5
+        restart: always
+        privileged: true
+        networks:
+            - frontend
+            - backend
+        volumes:
+            - ./php5.5/php.ini:/usr/local/etc/php/php.ini  #php配置文件路径
+            - /Users/oryxtc/Documents/home/www:/home/www
+            - /Users/oryxtc/Documents/home/www/yaf-vendor:/home/work/spw/vendor
+    php7:
+        build:
+            context: ./php7
+        image: oryxtc/local-php7
+        container_name: php7
+        restart: always
+        privileged: true
+        networks:
+            - frontend
+            - backend
+        volumes:
+            - ./php7/php.ini:/usr/local/etc/php/php.ini  #php配置文件路径
+            - /Users/oryxtc/Documents/home/www:/home/www
+            - /Users/oryxtc/Documents/home/www/yaf-vendor:/home/work/spw/vendor
+networks:
+    frontend:
+    backend:
